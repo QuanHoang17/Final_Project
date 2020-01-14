@@ -50,6 +50,21 @@ public class BeginController {
     private ArrayList <Players> listOfPlayers = new ArrayList<>();
     private ArrayList <Players> oldPlayerList = new ArrayList<>();
 
+    //Quan
+    void setOldPlayerList (ArrayList<Players> oldPlayerList) {
+        this.oldPlayerList = oldPlayerList;
+    }
+
+    //Quan: Arraylist methods
+    private byte searchIndex (int player_id) {
+        for (byte i = 0; i < oldPlayerList.size(); i++) {
+            if (oldPlayerList.get(i).getId() == player_id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
 
     //Hue: Initialization
     private void sceneFadeIn() {
@@ -124,6 +139,129 @@ public class BeginController {
         multiplayer.setText(bundle.getString("multiplayer"));
     }
 
+    //Quan: check for duplicate name.
+    private boolean isDuplicate() {
+        for (Players player : listOfPlayers) {
+            for (Players current_player : listOfPlayers) {
+                if (player.getName().equals(current_player.getName()) && player.getId() != current_player.getId()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    @FXML void startGame(ActionEvent event) throws IOException {
+        byte empty_player = 0;
+        listOfPlayers.clear();
+        for (int i = 0; i < player_names.size(); i++) {
+            if (player_names.get(i).getText().equals("")) {
+                empty_player++;
+            } else {
+                listOfPlayers.add(new Players(i + 1, player_names.get(i).getText()));
+            }
+        }
+        if (empty_player > 2) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle(bundle.getString("Game_error"));
+            alert.setHeaderText(null);
+            alert.setContentText(bundle.getString("Please_enter_name"));
+            alert.showAndWait();
+        } else if (isDuplicate()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle(bundle.getString("Game_error"));
+            alert.setHeaderText(null);
+            alert.setContentText(bundle.getString("Duplicate_name"));
+            alert.showAndWait();
+        } else {
+            for (Players player : listOfPlayers) {
+                for (Players oldplayer : oldPlayerList) {
+                    if (oldplayer.getName().equals(player.getName())) {
+                        player.setScores(oldplayer.getScores());
+                        break;
+                    }
+                }
+            }
+            fadeOutTransition(1);
+        }
+    }
+
+    //Quan: Scene transition to LAN or normal game.
+    private void fadeOutTransition(int i) {
+        FadeTransition sceneFadeOut = new FadeTransition();
+        sceneFadeOut.setNode(beginScene);
+        sceneFadeOut.setDuration(Duration.seconds(1));
+        sceneFadeOut.setFromValue(1);
+        sceneFadeOut.setToValue(0);
+
+        sceneFadeOut.setOnFinished((ActionEvent e) ->{
+            music.stop();
+            try {
+                if (i == 1){
+                    toTheNextGameScene();
+                }else{
+                    toLanScene();
+                }
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        sceneFadeOut.play();
+    }
+
+    //Quan
+    private void toTheNextGameScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/PreGame.fxml"));
+        Parent gameScene =(AnchorPane) loader.load();
+
+        Scene nextScene = new Scene(gameScene);
+
+        PreGameController preGameController = loader.getController();
+        preGameController.setGameLanguage(bundle);
+        preGameController.setNumOfPlayers(listOfPlayers);
+
+        Stage nextStage = (Stage) beginScene.getScene().getWindow();
+        nextStage.setScene(nextScene);
+        nextStage.setTitle("HELLO GAMERS");
+        nextStage.show();
+    }
+
+    //Quan
+    private void toLanScene() throws  IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/LANScene.fxml"));
+        Parent gameScene =(AnchorPane) loader.load();
+
+        LANController lanController = loader.getController();
+        lanController.setGameLanguage(bundle);
+        lanController.setListOfPlayers(listOfPlayers);
+
+        Scene nextScene = new Scene(gameScene);
+
+        Stage nextStage = (Stage) beginScene.getScene().getWindow();
+        nextStage.setScene(nextScene);
+        nextStage.setTitle("HELLO GAMERS");
+        nextStage.show();
+
+    }
+
+    //Quan
+    public void toLanGame(ActionEvent actionEvent) {
+        hostNameHolder.setOpacity(1);
+    }
+
+    //Quan
+    public void enterHostName(ActionEvent actionEvent) {
+        if (listOfPlayers.size() > 0 ){
+            listOfPlayers.clear();
+        }
+        listOfPlayers.add(new Players(1, hostNameHolder.getText().trim()));
+        fadeOutTransition(0);
+    }
+
     //Hue: Button control
     @FXML void toggleSound(ActionEvent event) {
         if (music.getStatus()== MediaPlayer.Status.PAUSED) {
@@ -140,6 +278,11 @@ public class BeginController {
         Platform.exit();
         System.exit(0);
     }
+
+
+
+
+
 
 
 }
