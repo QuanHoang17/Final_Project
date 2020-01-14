@@ -99,7 +99,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/Co ca ngua 3/FinalAssignmentt 3-2" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.22183909" />
@@ -231,6 +231,7 @@
       <workItem from="1577797972772" duration="8940000" />
       <workItem from="1578973476767" duration="14649000" />
       <workItem from="1578995789905" duration="880000" />
+      <workItem from="1578998054900" duration="504000" />
     </task>
     <servers />
   </component>
@@ -242,7 +243,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -385,10 +388,10 @@
     <state x="503" y="412" key="svn.repositoryBrowser/0.23.1440.813@0.23.1440.813" timestamp="1578934707814" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/FinalAssignmentt_3$Main.ic" NAME="Main Coverage Results" MODIFIED="1578937229350" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/FinalAssignmentt$Main.ic" NAME="Main Coverage Results" MODIFIED="1577086345636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>sample.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/FinalAssignmentt$Main.ic" NAME="Main Coverage Results" MODIFIED="1577086345636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/FinalAssignmentt_3$Main.ic" NAME="Main Coverage Results" MODIFIED="1578937229350" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>sample.*</FILTER>
     </SUITE>
   </component>

@@ -39,6 +39,11 @@ public class GameController implements Initializable {
     @FXML private Button stopButton;
     @FXML private Button rollDices;
 
+    @FXML public MediaPlayer dice_sound;
+    @FXML public MediaPlayer gameMusic;
+    @FXML public MediaPlayer move_sound;
+    @FXML public MediaPlayer kick_sound;
+
     @FXML public Label currentTurn;
     @FXML public Label nextTurn;
     @FXML private Label player1_name;
@@ -173,40 +178,49 @@ public class GameController implements Initializable {
 
     // Dice control
     public void randomDices(ActionEvent event) {
+
+        dice_sound.play();
         di1.setOpacity(1);
         di2.setOpacity(1);
-        rollDices.setDisable(false);
-        di1.setImage(new Image("file:src/sample/view/Facedice/" + dice1.roll() + ".png"));
-        di2.setImage(new Image("file:src/sample/view/Facedice/" + dice2.roll() + ".png"));
-        // Determining player order
-        if (player_order == listOfPlayers.size() - 1 && !is_dice_match) {
-            player_order = 0;
-        } else if (!is_dice_match) {
-            player_order++;
-        }
-        internal_turn = 0;
-        is_dice_match = dice1.getValue() == dice2.getValue();
+        rollDices.setDisable(true);
 
-        // Displaying player turn
-        if (player_order == listOfPlayers.size() - 1 && !is_dice_match) {
-            nextTurn.setText(bundle.getString("next_turn") + listOfPlayers.get(0).getName());
-        } else if (!is_dice_match) {
-            nextTurn.setText(bundle.getString("next_turn") + listOfPlayers.get(player_order + 1).getName());
-        }
-        currentTurn.setText(bundle.getString("current_turn") + listOfPlayers.get(player_order).getName());
+        Timeline rollAnimation = new Timeline(new KeyFrame(Duration.seconds(.4),(actionEvent)->{
+            di1.setImage(new Image("file:src/sample/view/Facedice/" + dice1.roll() + ".png"));
+            di2.setImage(new Image("file:src/sample/view/Facedice/" + dice2.roll() + ".png"));
+        }));
+        rollAnimation.setOnFinished((e) -> {
+                    dice_sound.stop();
+                    rollDices.setDisable(false);
 
-        // Player turn and dice rolling control
-        for (Horse horse : listOfHorses) {
-            if (horse.getPlayer_id() != listOfPlayers.get(player_order).getId()) {
-                horse.getImage_id().setDisable(true);
-            } else {
-                horse.getImage_id().setDisable(false);
-                if (predictMovement(horse, dice1.getValue()) || predictMovement(horse, dice2.getValue())) {
-                    rollDices.setDisable(true);
-                }
-            }
-        }
+                    // Determining player order
+                    if (player_order == listOfPlayers.size() - 1 && !is_dice_match) {
+                        player_order = 0;
+                    } else if (!is_dice_match) {
+                        player_order++;
+                    }
+                    internal_turn = 0;
+                    is_dice_match = dice1.getValue() == dice2.getValue();
 
+                    // Displaying player turn
+                    if (player_order == listOfPlayers.size() - 1 && !is_dice_match) {
+                        nextTurn.setText(bundle.getString("next_turn") + listOfPlayers.get(0).getName());
+                    } else if (!is_dice_match) {
+                        nextTurn.setText(bundle.getString("next_turn") + listOfPlayers.get(player_order + 1).getName());
+                    }
+                    currentTurn.setText(bundle.getString("current_turn") + listOfPlayers.get(player_order).getName());
+
+                    // Player turn and dice rolling control
+                    for (Horse horse : listOfHorses) {
+                        if (horse.getPlayer_id() != listOfPlayers.get(player_order).getId()) {
+                            horse.getImage_id().setDisable(true);
+                        } else {
+                            horse.getImage_id().setDisable(false);
+                            if (predictMovement(horse, dice1.getValue()) || predictMovement(horse, dice2.getValue())) {
+                                rollDices.setDisable(true);
+                            }
+                        }
+                    }
+        });
         rollDices.setDisable(true);
     }
 
@@ -407,6 +421,8 @@ public class GameController implements Initializable {
     }
 
     private void kickAction(int kicker_index, int kick_index) {
+        kick_sound.stop();
+        kick_sound.play();
         listOfHorses.get(kick_index).getImage_id().setLayoutX(listOfHorses.get(kick_index).getInitialX());
         listOfHorses.get(kick_index).getImage_id().setLayoutY(listOfHorses.get(kick_index).getInitialY());
         listOfPlayers.get(searchPlayerIndex(listOfHorses.get(kick_index).getPlayer_id())).addScores(-2);
@@ -479,6 +495,8 @@ public class GameController implements Initializable {
         movement.setCycleCount(selected_dice_value);
         EventHandler<ActionEvent> move = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
+                move_sound.stop();
+                move_sound.play();
                 current_dice++;
                 // Movement direction decision
                 movementDecision(horse);
