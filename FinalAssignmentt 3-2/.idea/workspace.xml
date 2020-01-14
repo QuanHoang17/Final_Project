@@ -97,7 +97,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="D:/Co ca ngua 3/FinalAssignmentt 3-2" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/client" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.22183909" />
@@ -229,8 +229,12 @@
       <workItem from="1577797972772" duration="8940000" />
       <workItem from="1578973476767" duration="14649000" />
       <workItem from="1578995789905" duration="880000" />
+<<<<<<< HEAD
       <workItem from="1578998054900" duration="504000" />
       <workItem from="1578998769250" duration="281000" />
+=======
+      <workItem from="1578998054900" duration="1301000" />
+>>>>>>> 9302ed90eb4d1e1b58f14cc6a3cf6f34c34ecfd2
     </task>
     <servers />
   </component>
