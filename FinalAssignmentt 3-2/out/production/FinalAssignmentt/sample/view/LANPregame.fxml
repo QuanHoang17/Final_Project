@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="preScene" prefHeight="550.0" prefWidth="830.0" styleClass="preGame" stylesheets="@PreGame.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.LANPregame">
+    <children>
+        <GridPane fx:id="boardOfOrder" gridLinesVisible="true" layoutX="318.0" layoutY="364.0" opacity="0.0" prefHeight="132.0" prefWidth="278.0" styleClass="gridPane" stylesheets="@PreGame.css">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+        </GridPane>
+        <Button fx:id="rollButton" layoutX="358.0" layoutY="218.0" mnemonicParsing="false" onAction="#rollOrder" prefHeight="74.0" prefWidth="146.0" styleClass="button" stylesheets="@PreGame.css" text="Roll" />
+        <ImageView fx:id="diceDisplay" fitHeight="100.0" fitWidth="100.0" layoutX="381.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="rollMsg" alignment="CENTER" layoutX="262.0" layoutY="56.0" prefHeight="42.0" prefWidth="333.0" styleClass="label" stylesheets="@PreGame.css" />
+        <Label fx:id="textMsg" alignment="CENTER" layoutX="264.0" layoutY="-1.0" prefHeight="57.0" prefWidth="333.0" styleClass="label" stylesheets="@PreGame.css">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Label>
+        <Label fx:id="rollNext" alignment="CENTER" layoutX="261.0" layoutY="306.0" prefHeight="42.0" prefWidth="340.0" styleClass="label" stylesheets="@PreGame.css" />
+        <Button fx:id="startButton" layoutX="665.0" layoutY="463.0" mnemonicParsing="false" onAction="#start" prefHeight="57.0" prefWidth="113.0" styleClass="button" stylesheets="@PreGame.css" text="Start Game" />
+    </children>
+</AnchorPane>

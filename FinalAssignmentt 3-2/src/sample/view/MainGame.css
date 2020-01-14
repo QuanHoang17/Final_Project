@@ -1,0 +1,39 @@
+ .pane{
+    -fx-background-image: url('img/pane.jpg');
+    -fx-background-image-size: 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+ .label .text {
+    -fx-fill : black;
+    -fx-font: 15px Tahoma;
+ }
+ .button {
+    -fx-background-color: skyblue;
+    -fx-text-fill: black;
+    -fx-padding: 15px;
+    -fx-text-align: center;
+    -fx-text-decoration: none;
+    -fx-display: inline-block;
+    -fx-font-size: 12px;
+    -fx-margin: 4px 2px;
+    -fx-cursor: pointer;
+    -fx-background-radius: 5em;
+    -fx-effect: dropshadow( three-pass-box , orange , 10,0,0,1 );
+  }
+  .button:hover {
+      -fx-background-color: green;
+  }
+
+  .button .text {
+      -fx-font : 13px Tahoma;
+      -fx-font-weight : bold;
+   }
+   .gridPane{
+   -fx-padding: 10;
+   -fx-border-style: solid inside;
+   -fx-border-width: 2;
+   -fx-border-insets: 5;
+   -fx-border-radius: 5;
+   -fx-border-color: blue;
+   }

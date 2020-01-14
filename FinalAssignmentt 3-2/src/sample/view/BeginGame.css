@@ -1,0 +1,99 @@
+.main{
+    -fx-background-image: url('img/background.png');
+    -fx-background-image-size: 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.button {
+   -fx-background-color: skyblue;
+   -fx-text-fill: black;
+   -fx-padding: 15px;
+   -fx-text-align: center;
+   -fx-text-decoration: none;
+   -fx-display: inline-block;
+   -fx-font-size: 12px;
+   -fx-margin: 4px 2px;
+   -fx-cursor: pointer;
+   -fx-background-radius: 5em;
+   -fx-effect: dropshadow( three-pass-box , orange , 10,0,0,1 );
+ }
+.button:hover {
+    -fx-background-color: green;
+}
+
+.button .text {
+    -fx-font : 13px Tahoma;
+    -fx-font-weight : bold;
+ }
+.choiceBox{
+      -fx-background-color: skyblue;
+       -fx-padding: 8px;
+       -fx-text-align: center;
+       -fx-text-decoration: none;
+       -fx-display: inline-block;
+       -fx-font-size: 12px;
+       -fx-margin: 4px 2px;
+       -fx-cursor: pointer;
+       -fx-background-radius: 5em;
+       -fx-effect: dropshadow( three-pass-box , orange , 10,0,0,1 );
+}
+.label .text {
+    -fx-fill : black;
+    -fx-font: 15px Tahoma;
+ }
+
+.text{
+ -fx-background-color: white;
+ -fx-background-image: url("img/tinyHorses/deer.png");
+ -fx-background-position: 0px -5px;
+ -fx-background-repeat: no-repeat;
+ -fx-padding: 25px 30px 12px 45px;
+ -fx-font-size: 16px ;
+ -fx-font-family:"Times New Roman", Times, serif;
+ }
+
+.text1{
+ -fx-background-color: white;
+ -fx-background-image: url("img/tinyHorses/horse.png");
+ -fx-background-position: 0px -5px;
+ -fx-background-repeat: no-repeat;
+ -fx-padding: 25px 20px 12px 40px;
+ -fx-font-size: 16px ;
+ -fx-font-family:"Times New Roman", Times, serif;
+}
+.text2{
+ -fx-background-color: white;
+ -fx-background-image: url("img/tinyHorses/pony.png");
+ -fx-background-position: 0px -5px;
+ -fx-background-repeat: no-repeat;
+ -fx-padding: 25px 20px 12px 45px;
+  -fx-font-size: 16px ;
+  -fx-font-family:"Times New Roman", Times, serif;
+}
+.text3{
+ -fx-background-color: white;
+ -fx-background-image: url("img/tinyHorses/warhorse.png");
+ -fx-background-position: 0px -5px;
+ -fx-background-repeat: no-repeat;
+ -fx-padding: 25px 20px 12px 45px;
+  -fx-font-size: 16px ;
+  -fx-font-family:"Times New Roman", Times, serif;
+}
+
+.text:focused {
+-fx-background-color: blue;
+-fx-text-fill: black;
+ }
+.text1:focused{
+-fx-background-color: red;
+    -fx-text-fill: black;
+ }
+.text2:focused{
+-fx-background-color: yellow;
+-fx-text-fill: black;
+ }
+.text3:focused{
+-fx-background-color: green;
+-fx-text-fill: black;
+ }
